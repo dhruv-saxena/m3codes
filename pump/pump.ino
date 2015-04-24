@@ -27,7 +27,8 @@ void setup() {
 void loop() {
   xold = x;
   x =  average(A1);
-
+  //Serial.println(x);
+  
   if (((xold <= 125) && (x > 125)) || ((xold >= 125) && (x < 125))) {
     Music.setGain1(1.0f);
     Music.setFrequency1(200);
@@ -52,11 +53,11 @@ void loop() {
 
   dir = x - xold;
 
-  if (dir > 0) {
+  if (dir > 1) {
     distance += x - xold;
-    Serial.print(xold);
-    Serial.print(" ");
-    Serial.println(distance);
+   // Serial.print(xold);
+   // Serial.print(" ");
+   // Serial.println(distance);
   }
 
   F = -100 - distance / 20;
