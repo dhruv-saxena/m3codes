@@ -12,6 +12,7 @@ int diff[6];
 boolean hitNote[6] = {false, false, false, false, false, false};
 long time = 0;
 unsigned int period = 300;
+int num = 1;
 
 void setup() {
   // declare the ledPin as an OUTPUT:
@@ -28,7 +29,12 @@ void setup() {
 void loop() {
 
   change();
-
+  
+  /*Serial.print(analogRead(A2));
+  delay(10);
+  Serial.print(" ");
+  Serial.println(analogRead(A2));
+*/
 }
 
 int average(int pin) {
@@ -41,13 +47,13 @@ int average(int pin) {
 }
 
 void change() {
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < num; i++) {
     prev[i] = current[i];
   }
 
   delay(10);
 
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < num; i++) {
     current[i] = average(he[i]);
     diff[i] = abs(prev[i] - current[i]);
     if (diff[i] > 10) {
@@ -57,7 +63,7 @@ void change() {
   }
 
   if ((millis() - time > period) && (millis() - time <= period + 50)) {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < num; i++) {
       if (hitNote[i]) {
         usbMIDI.sendNoteOn(62, 127, (i + 1));
         //delay(1000);

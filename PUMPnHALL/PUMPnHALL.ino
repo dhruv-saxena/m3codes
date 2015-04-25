@@ -1,8 +1,11 @@
 
-
+#include <Servo.h>;
 #include <spi4teensy3.h>
 #include <EEPROM.h>
 #include <M3T3.h>
+
+Servo myservo;
+int motorPos = 0; 
 
 //Hall Variables
 #define MIDI_CHANNEL 1
@@ -13,6 +16,7 @@ int diff[6];
 boolean hitNote[6] = {false, false, false, false, false, false};
 long time = 0;
 unsigned int period = 300;
+int num =6;
 
 //Pump Variables
 int xA, xoldA, xB, xoldB, xt, F; // input position x, output force F
@@ -29,7 +33,9 @@ long breakCount2 = 0;
 
 void setup() {
   Serial.begin(9600);
-
+  
+  myservo.attach(10);
+  
   //Motor Setup
   MotorA.init();
   xA = average(A1); // initialize xA

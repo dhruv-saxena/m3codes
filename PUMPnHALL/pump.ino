@@ -29,6 +29,7 @@ void pumpA() {
 
     F = -100;
     MotorA.torque(F);
+    motorTrigger();
   }
 
   //Serial.println(F);
@@ -67,6 +68,7 @@ void pumpB() {
 
     F = -100;
     MotorB.torque(F);
+    motorTrigger();
   }
 
   //Serial.println(F);
@@ -74,3 +76,5 @@ void pumpB() {
   breakCount1 = 0;
   breakCount2 = 0;
 }
+
+

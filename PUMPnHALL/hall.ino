@@ -11,13 +11,13 @@ int average(int pin) {
 }
 
 void hall() {
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < num; i++) {
     prev[i] = current[i];
   }
 
   delay(10);
 
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < num; i++) {
     current[i] = average(he[i]);
     diff[i] = abs(prev[i] - current[i]);
     if (diff[i] > 10) {
@@ -27,7 +27,7 @@ void hall() {
   }
 
   if ((millis() - time > period) && (millis() - time <= period + 50)) {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < num; i++) {
       if (hitNote[i]) {
         usbMIDI.sendNoteOn(62, 127, (i + 1));
         //delay(1000);
