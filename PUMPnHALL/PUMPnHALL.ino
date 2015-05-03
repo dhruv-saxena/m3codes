@@ -30,6 +30,8 @@ long distanceB = 0;
 int dirB = 0;
 long breakCount1 = 0;
 long breakCount2 = 0;
+int Fa = 0;
+int Fb = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -54,10 +56,7 @@ void setup() {
 
 void loop() {
   pumpA();
-  pumpB();
-  hall();
+ // pumpB();
+  //hall();
 }
-
-
-
 

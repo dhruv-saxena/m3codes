@@ -18,3 +18,8 @@ void motorTrigger()
 
 
 } 
+
+void motorTrigger2(){
+    myservo.write(motorPos);              // tell servo to go to position in variable 'pos' 
+    //delay();                       // waits 15ms for the servo to reach the position 
+}
