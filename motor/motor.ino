@@ -21,6 +21,7 @@ void loop() {
 //motorTrigger();
 pot = analogRead(A1);
 pot = map(pot,0,1023,10,170);
+Serial.println(pot);
 myservo.write(pot);
 
 }

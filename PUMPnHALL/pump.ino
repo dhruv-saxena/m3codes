@@ -14,13 +14,14 @@ void pumpA() {
   F = -100 - distanceA / 20;
   
   Fa = F;
-  motorPos = map(Fa,-600,-100,78,140);
+  //motorPos = map(Fa,-600,-100,160,115);
+  motorPosA = map(Fa,-300,-100,130,40);
   Serial.print(Fa);
   Serial.print(" ");
-  Serial.println(motorPos);
+  Serial.println(motorPosA);
   motorTrigger2();
   
-  if (F <= -600) {
+  if (F <= -350) {
     while (breakCount1 < 10000) {
       F = +500;
       distanceA = 0;
@@ -31,7 +32,7 @@ void pumpA() {
       F = -500;
       distanceA = 0;
       MotorA.torque(F);
-      breakCount2++;
+      breakCount2++; 
     }
 
     F = -100;
@@ -44,6 +45,7 @@ void pumpA() {
   breakCount1 = 0;
   breakCount2 = 0;
 }
+
 
 void pumpB() {
   xoldB = xB;
@@ -59,8 +61,14 @@ void pumpB() {
 
   F = -100 - distanceB / 20;
   Fb = F;
+  
+  motorPosB = map(Fb,-300,-100,110,20);
+  Serial.print(Fb);
+  Serial.print(" ");
+  Serial.println(motorPosB);
+  motorTrigger2();
 
-  if (F <= -600) {
+  if (F <= -350) {
     while (breakCount1 < 10000) {
       F = +500;
       distanceB = 0;

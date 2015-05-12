@@ -4,8 +4,11 @@
 #include <EEPROM.h>
 #include <M3T3.h>
 
-Servo myservo;
-int motorPos = 0; 
+Servo myServoA;
+int motorPosA = 0; 
+
+Servo myServoB;
+int motorPosB= 0; 
 
 //Hall Variables
 #define MIDI_CHANNEL 1
@@ -36,7 +39,8 @@ int Fb = 0;
 void setup() {
   Serial.begin(9600);
   
-  myservo.attach(10);
+  myServoA.attach(9);
+  myServoB.attach(10);
   
   //Motor Setup
   MotorA.init();
@@ -56,7 +60,7 @@ void setup() {
 
 void loop() {
   pumpA();
- // pumpB();
+  pumpB();
   //hall();
 }
 
